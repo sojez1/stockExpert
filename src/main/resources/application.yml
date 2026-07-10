@@ -1,0 +1,18 @@
+server:
+      port: 8180
+      servlet:
+        context-path: /stock-expert
+
+spring:
+  application:
+    name: backend-stock-expert
+
+  messages:
+    basename: internationalisation/messages
+    encoding: UTF-8
+  
+    
+    
+
+      
+

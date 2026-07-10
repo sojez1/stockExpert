@@ -1,0 +1,38 @@
+name: stock-expert-CI
+on:
+  push:
+    branches:
+     - main
+     - developper
+  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 1- Recuperation du code source
+      - name: checkout source code
+        uses: actions/checkout@v5
+
+      # 2- Installer le jdk java 17
+      - name: installation jdk 17
+        uses: actions/setup-java@v5
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      # 3- Compiler et lancer les test
+      - name: testing
+        run: mvn clean verify
+
+      # 4- Generer le fichier jar
+      - name: generer jar file
+        run: mvn package -DskipTests
+
+      # 5- Sauvegarde du fichier jar
+      - name: upload du fichier jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: stock-expert-backend
+          path: target/*.jar

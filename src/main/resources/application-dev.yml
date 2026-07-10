@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/stock_expert
+    username: postgres
+    password: sojez
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
