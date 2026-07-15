@@ -1,3 +1,8 @@
+stockage:
+  fichier:
+    photos:
+      produits: fichiers/photos/produits
+
 server:
       port: 8180
       servlet:

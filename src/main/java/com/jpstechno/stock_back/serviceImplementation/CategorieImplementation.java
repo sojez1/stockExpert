@@ -2,7 +2,7 @@ package com.jpstechno.stock_back.serviceImplementation;
 
 import org.springframework.stereotype.Service;
 
-import com.jpstechno.stock_back.dataTransfert.CategorieDto;
+import com.jpstechno.stock_back.dto.CategorieDto;
 import com.jpstechno.stock_back.modeles.Categories;
 import com.jpstechno.stock_back.repositories.CategorieRepositories;
 import com.jpstechno.stock_back.services.CategorieServices;

@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jpstechno.stock_back.dataTransfert.CategorieDto;
+import com.jpstechno.stock_back.dto.CategorieDto;
+import com.jpstechno.stock_back.dto.ProduitRequestDto;
 import com.jpstechno.stock_back.modeles.Categories;
+import com.jpstechno.stock_back.modeles.Produits;
 import com.jpstechno.stock_back.serviceImplementation.TranslatorServices;
 import com.jpstechno.stock_back.services.CategorieServices;
+import com.jpstechno.stock_back.services.ProduitServices;
 
 import jakarta.validation.Valid;
 
@@ -23,17 +26,26 @@ public class ProductControl {
     private final TranslatorServices translator;
 
     private final CategorieServices categorieService;
+    private final ProduitServices produitService;
 
-    public ProductControl(TranslatorServices translator, CategorieServices categorieService) {
+    public ProductControl(TranslatorServices translator, CategorieServices categorieService,
+            ProduitServices produitService) {
         this.translator = translator;
         this.categorieService = categorieService;
+        this.produitService = produitService;
     }
 
     @PostMapping("/save/categorie")
-    public ResponseEntity<Categories> saveProduct(@Valid @RequestBody CategorieDto categorie) {
+    public ResponseEntity<Categories> saveCategorie(@Valid @RequestBody CategorieDto categorie) {
         Categories cat = categorieService.saveCategorie(categorie);
         return new ResponseEntity<>(cat, HttpStatus.CREATED);
 
+    }
+
+    @PostMapping("/produit/enregistrer")
+    public ResponseEntity<?> saveProduit(@Valid @RequestBody ProduitRequestDto produitData) {
+        Produits prod = produitService.enregistrerUnProduit(produitData);
+        return new ResponseEntity<>(prod, HttpStatus.CREATED);
     }
 
 }
