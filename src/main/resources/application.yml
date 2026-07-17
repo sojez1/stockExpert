@@ -4,9 +4,8 @@ stockage:
       produits: fichiers/photos/produits
 
 server:
-      port: 8180
-      servlet:
-        context-path: /stock-expert
+    servlet:
+      context-path: /stock-expert
 
 spring:
   application:

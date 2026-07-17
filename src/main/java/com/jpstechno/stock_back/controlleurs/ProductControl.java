@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jpstechno.stock_back.dto.CategorieDto;
 import com.jpstechno.stock_back.dto.ProduitRequestDto;
@@ -46,6 +47,12 @@ public class ProductControl {
     public ResponseEntity<?> saveProduit(@Valid @RequestBody ProduitRequestDto produitData) {
         Produits prod = produitService.enregistrerUnProduit(produitData);
         return new ResponseEntity<>(prod, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/produit/{id}/photo/add")
+    public ResponseEntity<?> addPhotoToProduct(long productId, MultipartFile photo) {
+        String result = produitService.ajouterUnePhoto(productId, photo);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 }
