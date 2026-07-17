@@ -1,9 +1,11 @@
 package com.jpstechno.stock_back.controlleurs;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +38,7 @@ public class ProductControl {
         this.produitService = produitService;
     }
 
-    @PostMapping("/save/categorie")
+    @PostMapping("/categorie/save")
     public ResponseEntity<Categories> saveCategorie(@Valid @RequestBody CategorieDto categorie) {
         Categories cat = categorieService.saveCategorie(categorie);
         return new ResponseEntity<>(cat, HttpStatus.CREATED);
@@ -47,6 +49,12 @@ public class ProductControl {
     public ResponseEntity<?> saveProduit(@Valid @RequestBody ProduitRequestDto produitData) {
         Produits prod = produitService.enregistrerUnProduit(produitData);
         return new ResponseEntity<>(prod, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<?> listeDesProduits() {
+        List<Produits> liste = produitService.listeDesproduits();
+        return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
     @PostMapping("/produit/{id}/photo/add")

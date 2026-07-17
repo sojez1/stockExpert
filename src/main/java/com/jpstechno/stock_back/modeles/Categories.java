@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.hibernate.annotations.NaturalId;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,5 +38,6 @@ public class Categories {
     private String description;
 
     @OneToMany(mappedBy = "categorie")
+    @JsonIgnore
     private List<Produits> listeProduits;
 }

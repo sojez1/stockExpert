@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -80,6 +81,12 @@ public class ProduitImplementation implements ProduitServices {
         } catch (IOException exc) {
             throw new RuntimeException("Echec de la sauvegarde de la photo");
         }
+    }
+
+    @Override
+    public List<Produits> listeDesproduits() {
+        Sort trieParNom = Sort.by(Sort.Direction.ASC, "designation");
+        return prodRepo.findAll(trieParNom);
     }
 
     /**

@@ -11,6 +11,9 @@ spring:
   application:
     name: backend-stock-expert
 
+  profiles:
+    active: ${APP_PROFILE}
+
   messages:
     basename: internationalisation/messages
     encoding: UTF-8

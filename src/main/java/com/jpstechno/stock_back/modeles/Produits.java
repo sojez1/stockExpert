@@ -6,6 +6,9 @@ import java.util.List;
 
 import org.hibernate.annotations.NaturalId;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.jpstechno.stock_back.enumerations.Unites;
 
 import jakarta.persistence.Column;
