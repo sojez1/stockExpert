@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jpstechno.stock_back.config.ProduitPhotoStorage;
-import com.jpstechno.stock_back.dto.ProduitRequestDto;
+import com.jpstechno.stock_back.dto.dtoRequests.ProduitRequestDto;
 import com.jpstechno.stock_back.modeles.Categories;
 import com.jpstechno.stock_back.modeles.Produits;
 import com.jpstechno.stock_back.repositories.CategorieRepositories;

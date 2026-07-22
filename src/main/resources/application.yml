@@ -17,6 +17,14 @@ spring:
   messages:
     basename: internationalisation/messages
     encoding: UTF-8
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - bean
+        - metrics
   
     
     

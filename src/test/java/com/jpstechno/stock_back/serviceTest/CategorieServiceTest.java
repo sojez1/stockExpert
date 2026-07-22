@@ -12,7 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.jpstechno.stock_back.dto.CategorieDto;
+import com.jpstechno.stock_back.dto.dtoRequests.CategorieRequestDto;
 import com.jpstechno.stock_back.modeles.Categories;
 import com.jpstechno.stock_back.repositories.CategorieRepositories;
 import com.jpstechno.stock_back.serviceImplementation.CategorieImplementation;
@@ -29,7 +29,7 @@ public class CategorieServiceTest {
     @Test
     public void categorieServiceSaveTest() {
         // Arrange - preparation des donnees
-        CategorieDto cateDto = new CategorieDto("Produits chimiques",
+        CategorieRequestDto cateDto = new CategorieRequestDto("Produits chimiques",
                 "Produits chimiques destinees a l'entretien menager");
         Categories cat = Categories.builder()
                 .name(cateDto.name())

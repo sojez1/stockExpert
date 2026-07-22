@@ -12,7 +12,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.jpstechno.stock_back.controlleurs.ProductControl;
-import com.jpstechno.stock_back.dto.CategorieDto;
+import com.jpstechno.stock_back.dto.dtoRequests.CategorieRequestDto;
 import com.jpstechno.stock_back.modeles.Categories;
 import com.jpstechno.stock_back.serviceImplementation.CategorieImplementation;
 import com.jpstechno.stock_back.serviceImplementation.TranslatorServices;
@@ -42,14 +42,14 @@ public class ProduitControlleurTest {
         public void saveContegorieControlleurtest() throws Exception {
 
                 // arrange
-                CategorieDto cateDto = new CategorieDto("Materiel Informatique",
+                CategorieRequestDto cateDto = new CategorieRequestDto("Materiel Informatique",
                                 "Materiel et equipement elctronique utilisee en informatique");
 
                 Categories categorie = Categories.builder()
                                 .name(cateDto.name()).description(cateDto.description())
                                 .build();
 
-                when(categorieImpl.saveCategorie(any(CategorieDto.class))).thenReturn(categorie);
+                when(categorieImpl.saveCategorie(any(CategorieRequestDto.class))).thenReturn(categorie);
 
                 // act + assert
                 mockMvc.perform(post("/produits/save/categorie")
@@ -65,14 +65,14 @@ public class ProduitControlleurTest {
         public void saveContegorieControlleurtest_validationFail() throws Exception {
 
                 // arrange
-                CategorieDto cateDto = new CategorieDto("",
+                CategorieRequestDto cateDto = new CategorieRequestDto("",
                                 "Materiel et equipement elctronique utilisee en informatique");
 
                 Categories categorie = Categories.builder()
                                 .name(cateDto.name()).description(cateDto.description())
                                 .build();
 
-                when(categorieImpl.saveCategorie(any(CategorieDto.class))).thenReturn(categorie);
+                when(categorieImpl.saveCategorie(any(CategorieRequestDto.class))).thenReturn(categorie);
 
                 // act + assert
                 mockMvc.perform(post("/produits/save/categorie")

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.jpstechno.stock_back.dto.CategorieDto;
-import com.jpstechno.stock_back.dto.ProduitRequestDto;
+import com.jpstechno.stock_back.dto.dtoRequests.CategorieRequestDto;
+import com.jpstechno.stock_back.dto.dtoRequests.ProduitRequestDto;
 import com.jpstechno.stock_back.modeles.Categories;
 import com.jpstechno.stock_back.modeles.Produits;
 import com.jpstechno.stock_back.serviceImplementation.TranslatorServices;
@@ -39,7 +39,7 @@ public class ProductControl {
     }
 
     @PostMapping("/categorie/save")
-    public ResponseEntity<Categories> saveCategorie(@Valid @RequestBody CategorieDto categorie) {
+    public ResponseEntity<Categories> saveCategorie(@Valid @RequestBody CategorieRequestDto categorie) {
         Categories cat = categorieService.saveCategorie(categorie);
         return new ResponseEntity<>(cat, HttpStatus.CREATED);
 

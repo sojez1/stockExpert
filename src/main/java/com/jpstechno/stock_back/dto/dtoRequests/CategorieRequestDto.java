@@ -1,8 +1,8 @@
-package com.jpstechno.stock_back.dto;
+package com.jpstechno.stock_back.dto.dtoRequests;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record CategorieDto(
+public record CategorieRequestDto(
 
                 @NotBlank(message = "{categories.name.notblank}") String name,
 

@@ -2,7 +2,7 @@ package com.jpstechno.stock_back.serviceImplementation;
 
 import org.springframework.stereotype.Service;
 
-import com.jpstechno.stock_back.dto.CategorieDto;
+import com.jpstechno.stock_back.dto.dtoRequests.CategorieRequestDto;
 import com.jpstechno.stock_back.modeles.Categories;
 import com.jpstechno.stock_back.repositories.CategorieRepositories;
 import com.jpstechno.stock_back.services.CategorieServices;
@@ -17,7 +17,7 @@ public class CategorieImplementation implements CategorieServices {
     }
 
     @Override
-    public Categories saveCategorie(CategorieDto categorieDto) {
+    public Categories saveCategorie(CategorieRequestDto categorieDto) {
         Categories categorie = Categories.builder()
                 .name(categorieDto.name()).description(categorieDto.description())
                 .build();

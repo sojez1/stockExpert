@@ -6,9 +6,6 @@ import java.util.List;
 
 import org.hibernate.annotations.NaturalId;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.jpstechno.stock_back.enumerations.Unites;
 
 import jakarta.persistence.Column;
@@ -19,9 +16,11 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -39,6 +38,10 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(indexes = {
+        @Index(name = "idx_upc", columnList = "upc"),
+        @Index(name = "idx_designation", columnList = "designation")
+})
 public class Produits {
 
     @Id
@@ -81,6 +84,6 @@ public class Produits {
 
     @ElementCollection
     @Builder.Default
-    @Size(max = 5, message = "nombre maximal de photo est 5")
+    @Size(max = 8, message = "nombre maximal de photo est 8")
     private List<String> photoUrls = new ArrayList<String>(); // lien vers les photos
 }

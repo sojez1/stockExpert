@@ -1,11 +1,20 @@
+/**
+ * Regles metiers:
+ *  1- Un acteur est soit employe soit client
+ *  2- un acteur peut etre a la fois employe et client
+ */
+
 package com.jpstechno.stock_back.modeles;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.NaturalId;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,25 +27,32 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Categories {
+@Entity
+public class Acteurs {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "{categories.name.notblank}")
-    @NaturalId(mutable = true)
-    private String name;
+    @NotBlank(message = "")
+    private String firstName;
 
-    private String description;
+    @NotBlank(message = "")
+    private String lastName;
 
-    @OneToMany(mappedBy = "categorie")
+    @Column(unique = true)
+    private String email;
+
+    private String telephone;
+
+    @Builder.Default
     @JsonIgnore
-    private List<Produits> listeProduits;
+    @OneToMany(mappedBy = "acteur", orphanRemoval = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    private List<CompteActeurMagasin> comptes = new ArrayList<>();
+
 }

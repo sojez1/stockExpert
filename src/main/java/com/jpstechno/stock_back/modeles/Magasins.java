@@ -1,11 +1,11 @@
 package com.jpstechno.stock_back.modeles;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import org.hibernate.annotations.NaturalId;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,24 +19,31 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
 @Setter
+@Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Categories {
+public class Magasins {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "{categories.name.notblank}")
-    @NaturalId(mutable = true)
-    private String name;
+    @NotBlank(message = "")
+    private String denomination;
 
-    private String description;
+    @NotBlank(message = "")
+    private String telephone;
 
-    @OneToMany(mappedBy = "categorie")
+    private String adresse;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "magasin", orphanRemoval = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JsonIgnore
-    private List<Produits> listeProduits;
+    private List<CompteActeurMagasin> comptes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "magasin")
+    @JsonIgnore
+    private List<MouvementStock> listeMouvement;
 }

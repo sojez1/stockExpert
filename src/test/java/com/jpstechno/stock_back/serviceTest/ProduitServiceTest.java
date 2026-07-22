@@ -17,7 +17,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.jpstechno.stock_back.dto.ProduitRequestDto;
+import com.jpstechno.stock_back.dto.dtoRequests.ProduitRequestDto;
 import com.jpstechno.stock_back.enumerations.Unites;
 import com.jpstechno.stock_back.modeles.Categories;
 import com.jpstechno.stock_back.modeles.Produits;
