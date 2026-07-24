@@ -18,6 +18,19 @@ spring:
     basename: internationalisation/messages
     encoding: UTF-8
 
+  mail:
+    host: ${mail-host}
+    port: ${mail-port}
+    username: ${mail-username}
+    password: ${mail-password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
 management:
   endpoints:
     web:

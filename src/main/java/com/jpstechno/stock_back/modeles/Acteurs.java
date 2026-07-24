@@ -48,6 +48,9 @@ public class Acteurs {
     @Column(unique = true)
     private String email;
 
+    @Builder.Default
+    private boolean verifiedEmail = false;
+
     private String telephone;
 
     @Builder.Default
